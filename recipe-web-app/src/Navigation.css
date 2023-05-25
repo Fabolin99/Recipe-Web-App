@@ -38,4 +38,7 @@
     /* Add any other styling you need */
   }
   
+  body {
+    padding-top: 30px;  /* Replace 50px with the actual height of your navigation bar */
+  }
   
