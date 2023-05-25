@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';  // Correct path based on your project structure
+import '../Navigation.css';  // Correct path based on your project structure
 
 const NavigationBar = () => {
   const [activeItem, setActiveItem] = useState('');
