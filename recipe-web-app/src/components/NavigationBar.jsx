@@ -12,7 +12,9 @@ const NavigationBar = () => {
 
   return (
     <div>
+      <div className="toggle-button">
       <button onClick={() => setShowNav(!showNav)}>Toggle Navigation Bar</button>
+      </div>
       {showNav && (
         <div className="navigation-bar">
           <div className="logo">Logo</div>

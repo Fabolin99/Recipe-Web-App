@@ -30,3 +30,12 @@
     font-weight: bold;
   }
   
+  .toggle-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 101; /* Make sure this is above the navigation bar */
+    /* Add any other styling you need */
+  }
+  
+  
