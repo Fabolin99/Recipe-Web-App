@@ -1,12 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-import NavigationBar from "./components/NavigationBar";
+import NavigationBar from "./components/NavigationBar.jsx";
+import RecipePlanner from "./RepicePlanner/RecipePlanner.jsx"
 
 function App() {
   return (
-    <div>
+    <div>   
       <NavigationBar />
+      <RecipePlanner />
     </div>
   );
 }
