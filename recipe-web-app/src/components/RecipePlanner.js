@@ -1,6 +1,6 @@
 import styles from "./styles.module.css"
-import PlannedRecipes from "./PlannedRecipes"
-import RecipeSearch from "./RecipeSearch"
+import PlannedRecipes from "./RepicePlanner/PlannedRecipes"
+import RecipeSearch from "./RepicePlanner/RecipeSearch"
 
 /**
  * Recipe Planner
