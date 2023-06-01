@@ -1,4 +1,4 @@
-import styles from "./styles.module.css"
+import styles from "./styles.css"
 import React, { useState, useEffect } from 'react';
 import RecipeCard from './RecipeCard';
 
@@ -37,11 +37,11 @@ const RecipeSearch = () => {
     }
 
     return (
-        <div className={[styles.container, styles.recipeSearch].join(' ')}>
+        <div className={["container", "recipeSearch"]}>
             <h2>Recipes</h2>
-            <div className={styles.searchContainer}>
+            <div className="searchContainer">
                 <input
-                    className={styles.searchBar}
+                    className="searchBar"
                     type="text"
                     value={searchTerm}
                     onChange={(e) => {
@@ -53,7 +53,7 @@ const RecipeSearch = () => {
                     <i className="filter-icon"></i> {/* Replace with filter icon */}
                 </button>
             </div>
-            <div className={styles.recipeList}>
+            <div className="recipeList">
                 <ul>
                     {recipes.map((recipe) => (
                         <RecipeCard 
