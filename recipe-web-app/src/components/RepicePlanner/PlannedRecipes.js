@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RecipeCard from './RecipeCard';
-import styles from "./styles.module.css";
+import styles from "./styles.css";
 import { v4 as uuidv4 } from 'uuid';
 
 const PlannedRecipes = () => {
@@ -55,10 +55,10 @@ const PlannedRecipes = () => {
 
 
     return (
-        <div className={[styles.container, styles.plannedRecipes].join(' ')}>
+        <div className={["container", "plannedRecipes"]}>
             <h2>Planned Recipes</h2>
             <button onClick={handleReviewIngredients}>Review Ingredients</button>
-            <div className={styles.recipeList}>
+            <div className="recipeList">
                 <ul>
                     {plannedRecipes.map((recipe) => {
                         const listId = uuidv4(); // Generate a unique ID for the recipe card
