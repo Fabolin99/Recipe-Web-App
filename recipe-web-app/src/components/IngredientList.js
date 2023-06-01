@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ".IngredientList/IngredientList.css";
+import "./IngredientList/IngredientList.css";
 
 function IngredientList() {
   const checkBox = (index) => {

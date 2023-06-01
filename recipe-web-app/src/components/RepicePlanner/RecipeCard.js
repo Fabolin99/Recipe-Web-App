@@ -1,4 +1,4 @@
-import styles from './styles.module.css';
+import './styles.css';
 import React from 'react';
 
 /**
@@ -8,7 +8,7 @@ import React from 'react';
  */
 const RecipeCard = ({ recipe }) => {
     return (
-        <div className={styles.recipeCard}>
+        <div className="recipeCard">
             <img src={recipe?.image} alt={recipe?.name} />
             <h3>{recipe?.name}</h3>
             <p>{recipe?.description}</p>

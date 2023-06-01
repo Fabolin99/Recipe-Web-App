@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const NavigationBar = () => {
   const [activeItem, setActiveItem] = useState('');
 
+    const navigate = useNavigate()
+
   const handleItemClick = (itemName) => {
     setActiveItem(itemName);
+    navigate(itemName)
     // Perform any additional logic or actions for item selection
   };
 
@@ -13,27 +17,33 @@ const NavigationBar = () => {
       <div className="logo">Logo</div>
       <div
         className={`navigation-item ${activeItem === 'Home' ? 'active' : ''}`}
-        onClick={() => handleItemClick('Home')}
+        onClick={() => handleItemClick('/')}
       >
-        Home
+        Discover
       </div>
       <div
         className={`navigation-item ${activeItem === 'About' ? 'active' : ''}`}
-        onClick={() => handleItemClick('About')}
+        onClick={() => handleItemClick('create')}
       >
-        About
+        Create
       </div>
       <div
         className={`navigation-item ${activeItem === 'Services' ? 'active' : ''}`}
-        onClick={() => handleItemClick('Services')}
+        onClick={() => handleItemClick('cookbooks')}
       >
-        Services
+        Cookbooks
       </div>
       <div
         className={`navigation-item ${activeItem === 'Contact' ? 'active' : ''}`}
-        onClick={() => handleItemClick('Contact')}
+        onClick={() => handleItemClick('plan')}
       >
-        Contact
+        Plan
+      </div>
+      <div
+        className={`navigation-item ${activeItem === 'Contact' ? 'active' : ''}`}
+        onClick={() => handleItemClick('myaccount')}
+      >
+        My Account
       </div>
     </div>
   );
