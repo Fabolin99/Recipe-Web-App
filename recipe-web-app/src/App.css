@@ -1,0 +1,31 @@
+:root {
+  /* Colors */
+  --color-primary: #304FFE; /* Indigo */
+  --color-secondary: #00C853; /* Green */
+  --color-accent: #FF4081; /* Pink */
+  --color-background: #FFFFFF; /* White */
+  --color-text: #212121; /* Dark Grey */
+  --color-error: #B00020; /* Red */
+
+  /* Spacing Sizes (for padding, margin - in px) */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Font Sizes (in px) */
+  --font-size-xxs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+
+  /* Font Styles */
+  --font-primary: "Helvetica Neue", Arial, sans-serif;
+  --font-secondary: Georgia, "Times New Roman", serif;
+}
