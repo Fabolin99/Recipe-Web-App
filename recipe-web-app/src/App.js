@@ -5,8 +5,12 @@ import NavigationBar from "./components/NavigationBar";
 import NotFound from "./components/NotFound";
 import RecipePlanner from "./components/RecipePlanner";
 import HomePage from "./components/HomePage";
-
+import LoginPage from './MyAccount/LoginPage';
+import { useState } from 'react';
+import Register from './MyAccount/Register';
 function App() {
+
+  const [formSwitch, setOnFormSwitch] = useState(true)
   return (
     <div>
       <BrowserRouter>
