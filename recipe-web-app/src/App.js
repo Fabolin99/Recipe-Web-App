@@ -12,9 +12,10 @@ function App() {
 
   const [formSwitch, setOnFormSwitch] = useState(true)
   return (
-    <div>
+    <div className="app">
       <BrowserRouter>
         <NavigationBar />
+        <div className="view">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/create" element={<NotFound />} />
@@ -22,6 +23,7 @@ function App() {
           <Route path="/plan" element={<RecipePlanner />} />
           <Route path="/myaccout" element={<NotFound />} />
         </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );

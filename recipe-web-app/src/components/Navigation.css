@@ -1,5 +1,4 @@
 .navigation-bar {
-    position: fixed;  /* Make navigation bar fixed */
     display: flex;
     flex-direction: column;
     height: 100vh; /* Set the navigation bar to occupy the full viewport height */
