@@ -3,55 +3,36 @@ import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
 
 const NavigationBar = () => {
+  const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState("");
 
-  const navigate = useNavigate();
+  const navItems = [
+    { name: "Discover", path: "/" },
+    { name: "Create", path: "/create" },
+    { name: "Cookbooks", path: "/cookbooks" },
+    { name: "Plan", path: "/plan" },
+    { name: "My Account", path: "/myaccount" },
+  ];
 
-  const handleItemClick = (itemName) => {
-    setActiveItem(itemName);
-    navigate(itemName);
-    // Perform any additional logic or actions for item selection
+  const handleItemClick = (itemPath) => {
+    setActiveItem(itemPath);
+    navigate(itemPath);
   };
 
   return (
     <div className="navigation-bar">
-      <div className="logo">Logo</div>
-      <div
-        className={`navigation-item ${activeItem === "Home" ? "active" : ""}`}
-        onClick={() => handleItemClick("/")}
-      >
-        Discover
-      </div>
-      <div
-        className={`navigation-item ${activeItem === "About" ? "active" : ""}`}
-        onClick={() => handleItemClick("create")}
-      >
-        Create
-      </div>
-      <div
-        className={`navigation-item ${
-          activeItem === "Services" ? "active" : ""
-        }`}
-        onClick={() => handleItemClick("cookbooks")}
-      >
-        Cookbooks
-      </div>
-      <div
-        className={`navigation-item ${
-          activeItem === "Contact" ? "active" : ""
-        }`}
-        onClick={() => handleItemClick("plan")}
-      >
-        Plan
-      </div>
-      <div
-        className={`navigation-item ${
-          activeItem === "Contact" ? "active" : ""
-        }`}
-        onClick={() => handleItemClick("myaccount")}
-      >
-        My Account
-      </div>
+      <div className="logo">My Recipe</div>
+      {navItems.map((item) => (
+        <div
+          key={item.name}
+          className={`navigation-item ${
+            activeItem === item.path ? "active" : ""
+          }`}
+          onClick={() => handleItemClick(item.path)}
+        >
+          {item.name}
+        </div>
+      ))}
     </div>
   );
 };
