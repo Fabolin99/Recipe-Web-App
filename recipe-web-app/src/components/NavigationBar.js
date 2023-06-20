@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Navigation.css';
+import "./Navigation.css";
 
 const NavigationBar = () => {
-    const [activeItem, setActiveItem] = useState('');
+  const [activeItem, setActiveItem] = useState("");
 
   const navigate = useNavigate();
 
-    const handleItemClick = (itemName) => {
-        setActiveItem(itemName);
-        navigate(itemName)
-        // Perform any additional logic or actions for item selection
-    };
+  const handleItemClick = (itemName) => {
+    setActiveItem(itemName);
+    navigate(itemName);
+    // Perform any additional logic or actions for item selection
+  };
 
   return (
     <div className="navigation-bar">
