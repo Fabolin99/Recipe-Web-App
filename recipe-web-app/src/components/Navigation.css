@@ -1,17 +1,26 @@
 .navigation-bar {
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Set the navigation bar to occupy the full viewport height */
-    width: 200px;
-    overflow: auto;  /* Add scroll to navigation bar if content overflows */
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Set the navigation bar to occupy the full viewport height */
+  width: 150px;
+  overflow: auto;  /* Add scroll to navigation bar if content overflows */
   }
-  
-  .logo {
-    padding: 10px;
-    font-weight: bold;
-    background-color: #f0f0f0;
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  cursor: pointer;
   }
-  
+
+  .logo-img {
+    width: 100px;
+    height: 100px;
+  }
+
   .navigation-item {
     flex: 1; /* Allow the navigation items to expand and occupy equal vertical space */
     padding: 10px;
