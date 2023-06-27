@@ -1,12 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import NavigationBar from "./components/NavigationBar";
+import CreateRecipe from "./supabase_practice";
 
 function App() {
   return (
     <div>
-      <NavigationBar />
+      <CreateRecipe />
     </div>
   );
 }
