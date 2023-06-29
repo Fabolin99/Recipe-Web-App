@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import LoginPage from './MyAccount/LoginPage';
 import { useState } from 'react';
 import Register from './MyAccount/Register';
+import IngredientsByKey from './IngredientsByKey';
 function App() {
 
   const [formSwitch, setOnFormSwitch] = useState(true)
@@ -21,6 +22,8 @@ function App() {
           <Route path="/cookbooks" element={<NotFound />} />
           <Route path="/plan" element={<RecipePlanner />} />
           <Route path="/myaccout" element={<NotFound />} />
+          <Route path="/Help" element={<IngredientsByKey />} />
+
         </Routes>
       </BrowserRouter>
     </div>

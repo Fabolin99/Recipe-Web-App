@@ -7,6 +7,9 @@ function IngredientList() {
     updatedIngredients[index][3] = !updatedIngredients[index][3];
     setIngredients(updatedIngredients);
   };
+
+
+  
   const [ingredients, setIngredients] = useState([
     [1, "item", "eggs"],
     [2, "lbs", "chicken"],
@@ -21,6 +24,9 @@ function IngredientList() {
     [1, "item", "pickles"],
     [1, "item", "celery"],
   ]);
+
+  
+
   const compileIngredients = () => {
     return (
       <ul className="ingredientList">
