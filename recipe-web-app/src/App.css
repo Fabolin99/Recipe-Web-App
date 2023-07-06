@@ -32,7 +32,7 @@
 
 .app {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 200px 1fr;
 }
 
 .navigation-bar {
@@ -41,4 +41,6 @@
 
 .view {
   grid-column: 2 / 3;
+  /* padding: 10px; */
+  max-height: 100vh;
 }
