@@ -4,37 +4,39 @@ import "./IngredientsByKey.css";
 
 
 const IngredientsByKey = () => {
-    const keys = [1];
+    const keys = [1,2,3];
     const [ingredientsFromKey, setIngredientsFromKey] = useState([]);
 
-    useEffect (() => {
-        const getIngredients = async (keys) => {
-            const { data, error } = await supabase
+    const getIngredients = async (keys) => {
+        const { data, error } = await supabase
             .from('recipes')
             .select('ingredients')
             .in('id', keys);
-        
-            if (error) {
-                console.error(error);
-                return [];
-            }
-            const ingredientsList = data.map((row) => JSON.parse(row.ingredients));
-            setIngredientsFromKey(ingredientsList);
-            };
-            console.log(ingredientsFromKey);
-
-            getIngredients();
-    }, [])
     
+          if (error) {
+            console.error(error);
+            return;
+          }
+    
+          const ingredientsList = data.map((row) => row.ingredients);
+          setIngredientsFromKey(ingredientsList);
+        };
+        getIngredients(keys);
+
     return (
-        <div id='ingList'>
-          <h2>Recipe Ingredients</h2>
-          <ul>
-            {ingredientsFromKey.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
+        <div id="ingList">
+      <h2>Recipe Ingredients</h2>
+      <button useEffect></button>
+      <ul>
+        {ingredientsFromKey.map((ingredients, index) => (
+          <li key={index}>
+            {ingredients.map((ingredient, innerIndex) => (
+              <div key={innerIndex}>{ingredient.trim()}</div>
             ))}
-          </ul>
-        </div>
+          </li>
+        ))}
+      </ul>
+    </div>
       );
 }
 
