@@ -1,6 +1,6 @@
-import supabase from "./supabaseConfig";
+import supabase from "../supabaseConfig";
 import React, { useEffect, useState } from "react";
-import "./IngredientsByKey.css";
+import "./IngredientList/IngredientsByKey.css";
 
 
 const IngredientsByKey = () => {
@@ -28,15 +28,20 @@ const IngredientsByKey = () => {
         
 
     return (
-        <div id="ingList">
+        <div className="container">
+      <div className="ingredients-box">
       <h1>Ingredients</h1>
-      <ul>
+      <div className="list-container">
+      <ul className="ing-list">
         {ingredientsFromKey.map((ingredient, index) => (
-          <li key={index}>
-            {ingredient}
+          <li className="list-item"key={index}>
+            <input type="checkbox" />
+            <span>{ingredient.trim()}</span>
           </li>
         ))}
       </ul>
+      </div>
+      </div>
     </div>
       );
 }

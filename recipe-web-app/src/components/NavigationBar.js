@@ -12,7 +12,6 @@ const NavigationBar = () => {
     { name: "Cookbooks", path: "/cookbooks" },
     { name: "Plan", path: "/plan" },
     { name: "My Account", path: "/myaccount" },
-    { name: "Help", path: "/help" },
 
   ];
 
