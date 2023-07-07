@@ -4,7 +4,7 @@ import "./IngredientsByKey.css";
 
 
 const IngredientsByKey = () => {
-    const keys = [1,2,3];
+    const keys = [8,9,10];
     const [ingredientsFromKey, setIngredientsFromKey] = useState([]);
 
     const getIngredients = async (keys) => {
@@ -18,21 +18,22 @@ const IngredientsByKey = () => {
             return;
           }
     
-          const ingredientsList = data.map((row) => row.ingredients);
+          const ingredientsList = data.flatMap((row) => row.ingredients.split(","));
           setIngredientsFromKey(ingredientsList);
         };
+    
+    useEffect(() => {
         getIngredients(keys);
+    }, []);
+        
 
     return (
         <div id="ingList">
-      <h2>Recipe Ingredients</h2>
-      <button useEffect></button>
+      <h1>Ingredients</h1>
       <ul>
-        {ingredientsFromKey.map((ingredients, index) => (
+        {ingredientsFromKey.map((ingredient, index) => (
           <li key={index}>
-            {ingredients.map((ingredient, innerIndex) => (
-              <div key={innerIndex}>{ingredient.trim()}</div>
-            ))}
+            {ingredient}
           </li>
         ))}
       </ul>
