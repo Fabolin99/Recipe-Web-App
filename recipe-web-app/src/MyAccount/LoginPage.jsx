@@ -8,12 +8,10 @@ import {Auth} from "@supabase/auth-ui-react";
 const url = process.env.SUPABASE_APP_URL;
 const anon_key = process.env.SUPABASE_APP_KEY;
 const supabase = createClient(
-  url,
-  anon_key
+   "https://ixfirovbkskvyhrltteh.supabase.co",
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4Zmlyb3Zia3Nrdnlocmx0dGVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUwNDQzMDMsImV4cCI6MjAwMDYyMDMwM30.e-9p8pkQ7T5FnXai60BydhcREf1O-Ga3h0VTZzCCUPY"
 );
-  
-  //'https://ixfirovbkskvyhrltteh.supabase.co'
-//"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4Zmlyb3Zia3Nrdnlocmx0dGVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUwNDQzMDMsImV4cCI6MjAwMDYyMDMwM30.e-9p8pkQ7T5FnXai60BydhcREf1O-Ga3h0VTZzCCUPY");
+
 
 function Login(){
   const navigate = useNavigate();
