@@ -1,70 +1,76 @@
-import styles from "./styles.css"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { PlannedRecipesContext } from '../../contexts/PlannedRecipeContext';
 import RecipeCard from './RecipeCard';
+import supabase from "../../supabaseConfig";
 
 /**
  * RecipeSearch
- * @description Search for recipes and displays them in a list.
+ * @description Search for recipes and display them in a list.
  */
 const RecipeSearch = () => {
-
+    const { plannedRecipes, addPlannedRecipe } = useContext(PlannedRecipesContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [recipes, setRecipes] = useState([]);
 
+    // Handle the initial search and any subsequent searches
     useEffect(() => {
-        handleSearch();
-    }, [])
+        const handleSearch = async () => {
+            try {
+                let { data, error } = await supabase
+                    .from('recipes')
+                    .select()
+                    .ilike('description', `%${searchTerm}%`);
 
-    /**
-     * Handle Search
-     * @description Searches for recipes meeting search terms and sets recipes arrays to match.
-     */
-    const handleSearch = () => {
-        // This will eventually equal whatever the search returns.
-        const searchResults = [
-            { id: 1, name: 'Recipe 1', description: 'Recipe 1 description', image: 'http://via.placeholder.com/60' },
-            { id: 2, name: 'Recipe 2', description: 'Recipe 2 description', image: 'http://via.placeholder.com/60' },
-            { id: 3, name: 'Recipe 3', description: 'Recipe 3 description', image: 'http://via.placeholder.com/60' },
-            { id: 4, name: 'Recipe 4', description: 'Recipe 4 description', image: 'http://via.placeholder.com/60' },
-            { id: 5, name: 'Recipe 5', description: 'Recipe 5 description', image: 'http://via.placeholder.com/60' },
-        ]; // Temporary list of recipes
-        setRecipes(searchResults);
-    };
+                if (error) {
+                    console.error('Error fetching recipes:', error);
+                    return;
+                }
+
+                if (searchTerm === '') {
+                    // If no search term is provided, fetch all recipes
+                    ({ data, error } = await supabase.from('recipes').select());
+
+                    if (error) {
+                        console.error('Error fetching recipes:', error);
+                        return;
+                    }
+                }
+
+                setRecipes(data);
+            } catch (error) {
+                console.error('Error fetching recipes:', error);
+            }
+        };
+
+        handleSearch();
+    }, [searchTerm]);
 
     const search = (e) => {
         setSearchTerm(e.target.value);
-        handleSearch();
-    }
+    };
 
     return (
-        <div className={["container", "recipeSearch"]}>
+        <div className="container recipeSearch">
             <h2>Recipes</h2>
             <div className="searchContainer">
                 <input
                     className="searchBar"
                     type="text"
                     value={searchTerm}
-                    onChange={(e) => {
-                            search(e);
-                        }}
-                    placeholder="Search recipes" 
+                    onChange={search}
+                    placeholder="Search recipes"
                 />
-                <button onClick={handleSearch}>
-                    <i className="filter-icon"></i> {/* Replace with filter icon */}
-                </button>
             </div>
             <div className="recipeList">
                 <ul>
                     {recipes.map((recipe) => (
-                        <RecipeCard 
-                            key={recipe.id} 
-                            recipe={recipe} 
-                        />
-                        ))}
+                        <RecipeCard key={recipe.id} recipe={recipe} onClickFunction={() => addPlannedRecipe(recipe)} buttonText={"Add Recipe"}/>
+                    ))}
                 </ul>
             </div>
         </div>
     );
-}
+};
 
 export default RecipeSearch;
+ 
