@@ -4,7 +4,7 @@ import "./IngredientList/IngredientsByKey.css";
 
 
 const IngredientsByKey = () => {
-    const keys = [8,9,10];
+    const keys = [13,14,15,16,17];
     const [ingredientsFromKey, setIngredientsFromKey] = useState([]);
 
     const getIngredients = async (keys) => {

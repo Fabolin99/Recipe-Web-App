@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import LoginPage from './MyAccount/LoginPage';
 import { useState } from 'react';
 import Register from './MyAccount/Register';
+import IngredientsByKey from "./components/IngredientsByKey";
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/create" element={<NotFound />} />
-          <Route path="/cookbooks" element={<NotFound />} />
+          <Route path="/cookbooks" element={<IngredientsByKey />} />
           <Route path="/plan" element={<RecipePlanner />} />
           <Route path="/myaccout" element={<NotFound />} />
 
