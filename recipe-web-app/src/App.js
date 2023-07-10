@@ -7,7 +7,7 @@ import RecipePlanner from "./components/RecipePlanner";
 import HomePage from "./components/HomePage";
 import LoginPage from './MyAccount/LoginPage';
 import { useState } from 'react';
-import Register from './MyAccount/Register';
+
 function App() {
 
   const [formSwitch, setOnFormSwitch] = useState(true)
@@ -20,7 +20,8 @@ function App() {
           <Route path="/create" element={<NotFound />} />
           <Route path="/cookbooks" element={<NotFound />} />
           <Route path="/plan" element={<RecipePlanner />} />
-          <Route path="/myaccout" element={<NotFound />} />
+          <Route path="/myaccount" element={<LoginPage />} />
+
         </Routes>
       </BrowserRouter>
     </div>
