@@ -7,25 +7,25 @@ const SearchBar = () => {
     const [suggestions, setSuggestions] = useState([]);
     const [activeSuggestion, setActiveSuggestion] = useState(0);
 
-    const handleChange = async event => {
-        setSearchText(event.target.value);
+    const handleChange = async (event) => {
+        const value = event.target.value;
+        setSearchText(value);
         setActiveSuggestion(0);
 
-        let suggestions = [];
-        if (event.target.value.length > 0) {
-            const { data, error } = await supabase
-                .from('yourTable')
-                .select('yourColumn')
-                .ilike('yourColumn', `%${event.target.value}%`);
-
+        if (value.length > 0) {
+            const { data: recipes, error } = await supabase
+              .from('recipes')  // The table name is 'recipes'
+              .select('description')  // Fetch the 'description' column
+              .ilike('description', `${value}%`);  // The % are wildcards
             if (error) {
-                console.error('Error fetching data: ', error);
+              console.log('Error: ', error);
             } else {
-                suggestions = data.map(item => item.yourColumn);
+              setSuggestions(recipes.map(recipe => recipe.description));  // Use 'description' here too
             }
-        }
-        setSuggestions(suggestions);
-    };
+          } else {
+            setSuggestions([]);
+          }
+        };
 
     const handleClick = suggestion => {
         setSearchText(suggestion);
