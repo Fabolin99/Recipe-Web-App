@@ -1,61 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import RecipeCard from './RecipeCard';
-import styles from "./styles.css";
 import { v4 as uuidv4 } from 'uuid';
+import { PlannedRecipesContext } from '../../contexts/PlannedRecipeContext';
 
 const PlannedRecipes = () => {
-    const [plannedRecipes, setPlannedRecipes] = useState([]);
+    const { plannedRecipes, removePlannedRecipe, addPlannedRecipe } = useContext(PlannedRecipesContext);
 
     // "Initialize" the list of planned recipes.
     useEffect(() => {
         // Retrieve planned recipes from wherever they end up being stored.
         const storedPlannedRecipes = getStoredRecipes();
-        setPlannedRecipes(storedPlannedRecipes);
+        for (const recipe in storedPlannedRecipes) {addPlannedRecipe(recipe)};
     }, []);
 
-    /**
-     * Get Stored Recipes
-     * @returns storedPlannedRecipes - A list of all previously stored planned recipes.
-     */
+    // Gets the previously stored recipes from memory.
     const getStoredRecipes = () => {
-        // Get the stored recipes from wherever they end up being stored.
-        return [
-            { id: 1, name: 'Recipe 1', description: 'Recipe 1 description', image: 'http://via.placeholder.com/60' },
-            { id: 2, name: 'Recipe 2', description: 'Recipe 2 description', image: 'http://via.placeholder.com/60' },
-            { id: 3, name: 'Recipe 3', description: 'Recipe 3 description', image: 'http://via.placeholder.com/60' },
-            { id: 4, name: 'Recipe 4', description: 'Recipe 4 description', image: 'http://via.placeholder.com/60' },
-            { id: 5, name: 'Recipe 5', description: 'Recipe 5 description', image: 'http://via.placeholder.com/60' },
-        ]; // Temporary List of Recipes
+        // Check if stored recipes exist in local storage
+        const storedRecipes = localStorage.getItem('recipes');
+
+        // If there are no stored recipes, return an empty array
+        if (!storedRecipes) {
+            return [];
+        }
+
+        // Parse the stored recipes from JSON format
+        try {
+            const parsedRecipes = JSON.parse(storedRecipes);
+
+            // Return the parsed recipes array
+            return parsedRecipes;
+        } catch (error) {
+            console.error('Error parsing stored recipes:', error);
+            return [];
+        }
     };
 
-    /**
-     * Save Recipes
-     * @description Saves the current recipes to wherever they are saved.
-     */
     const saveRecipes = () => {
-        return null
-    }
+        return null;
+    };
 
     // Handle navigation to the review screen
     const handleReviewIngredients = () => {
-        saveRecipes()
-        return null
+        saveRecipes();
+        
     };
-
-    /**
-     * Handle Remove Recipe
-     * @description Filters the recipe currently being removed from the list.
-     * @param { int } recipeId The id of the recipe being removed
-     */
-    const handleRemoveRecipe = (recipeId) => {
-        setPlannedRecipes((prevRecipes) =>
-            prevRecipes.filter((recipe) => recipe.id !== recipeId)
-        );
-    };
-
 
     return (
-        <div className={["container", "plannedRecipes"]}>
+        <div className={'container plannedRecipes'}>
             <h2>Planned Recipes</h2>
             <button onClick={handleReviewIngredients}>Review Ingredients</button>
             <div className="recipeList">
@@ -67,7 +58,8 @@ const PlannedRecipes = () => {
                                 key={recipe.id}
                                 listId={listId}
                                 recipe={recipe}
-                                function={() => handleRemoveRecipe(recipe.id)}
+                                buttonText={"Remove Recipe"}
+                                onClickFunction={() => removePlannedRecipe(recipe.id)} // Use the removePlannedRecipe function from context
                             />
                         );
                     })}
