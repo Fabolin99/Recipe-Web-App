@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
-import { supabase } from './supabaseConfig'; // import the supabase client
+import { supabase } from './supabaseConfig';
 
 const SearchBar = () => {
     const [searchText, setSearchText] = useState('');
@@ -19,22 +19,22 @@ const SearchBar = () => {
 
         if (value.length > 0) {
             const { data: recipes, error } = await supabase
-              .from('recipes')  // The table name is 'recipes'
-              .select('description')  // Fetch the 'description' column
-              .ilike('description', `${value}%`);  // The % are wildcards
+              .from('recipes')
+              .select('*')
+              .ilike('description', `${value}%`);
             if (error) {
               console.log('Error: ', error);
             } else {
-              setSuggestions(recipes.map(recipe => recipe.description));  // Use 'description' here too
+              setSuggestions(recipes);
             }
-          } else {
+        } else {
             setSuggestions([]);
-          }
-        };
+        }
+    };
 
-    const handleClick = suggestion => {
-        setSearchText(suggestion);
-        setSelectedRecipe(suggestion); // set the clicked suggestion as the selected recipe
+    const handleClick = recipe => {
+        setSearchText(recipe.description);
+        setSelectedRecipe(recipe);
         setSuggestions([]);
     };
 
@@ -46,8 +46,8 @@ const SearchBar = () => {
             setActiveSuggestion(activeSuggestion === suggestions.length - 1 ? 0 : activeSuggestion + 1);
         }
         else if (event.keyCode === 13) { // enter key
-            setSearchText(suggestions[activeSuggestion]);
-            setSelectedRecipe(suggestions[activeSuggestion]); // set the active suggestion as the selected recipe
+            setSearchText(suggestions[activeSuggestion].description);
+            setSelectedRecipe(suggestions[activeSuggestion]);
             setSuggestions([]);
         }
     };
@@ -65,13 +65,13 @@ const SearchBar = () => {
             />
             {suggestions && suggestions.length > 0 && (
                 <ul className="suggestions">
-                    {suggestions.map((item, index) => (
+                    {suggestions.map((recipe, index) => (
                         <li 
-                            key={index} 
-                            onClick={() => handleClick(item)}
+                            key={recipe.id} 
+                            onClick={() => handleClick(recipe)}
                             className={index === activeSuggestion ? "active" : ""}
                         >
-                            {item}
+                            {recipe.description}
                         </li>
                     ))}
                 </ul>
@@ -79,8 +79,10 @@ const SearchBar = () => {
 
             {selectedRecipe && (
                 <div className="recipe-box">
-                    <h2>Selected Recipe:</h2>
-                    <p>{selectedRecipe}</p>
+                    <h2>{selectedRecipe.description}</h2>
+                    <img src={selectedRecipe.image_data} alt={selectedRecipe.description}/>
+                    <p><strong>Ingredients:</strong> {selectedRecipe.ingredients}</p>
+                    <p><strong>Instructions:</strong> {selectedRecipe.instructions}</p>
                 </div>
             )}
         </div>
