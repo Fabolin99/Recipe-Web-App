@@ -1,44 +1,71 @@
 import React, {useState} from "react";
-//import LoginPage from "./LoginPage";
+import {useNavigate} from "react-router-dom";
+import './MyAccount.css'; 
+import { createClient } from '@supabase/supabase-js';
 
-
-const Register = () => {
-    const [formSwitch, setOnFormSwitch] = useState(true)
+//delcare useStates 
+const RegisterForm = () => {
     const[email, setEmail] = useState('');
     const[password, setPass] = useState('');
     const[name, setName] = useState('');
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
-    }
-    return (
-        <div className="form-container">
-            <h2>Register</h2>
-            <form onSubmit = {(e)=>handleSubmit}>
-                <label htmlFor="name">Full Name</label>
-                <br/>
-                <input value = {name} name = "name" id = "name" 
-                placeholder = "full name" onChange = {(e) => setName(e.target.value)}></input>
-                <br/>
-                <label htmlFor="email">Email</label>
-                <br/>
-                <input value = {email} name = "email" id = "email" 
-                placeholder = "youremail@gmail.com" onChange = {(e) => setEmail(e.target.value)}></input>
-                <br/>
-                <label htmlfor = "password"> Password</label>
-                <br/>
-                <input value = {password} 
-                onChange = {(e) => setPass(e.target.value)} type = "password" placeholder="*******" id = "password" name = "password" />
-                <br/>
-                <button type = "submit">Register</button>
-                <br/>
-                <button onClick={()=>setOnFormSwitch(!formSwitch)}>Back to Login Page</button>
-                <br/>
-            </form>
+//create supabase client
+const url = process.env.SUPABASE_APP_URL;
+const anon_key = process.env.SUPABASE_APP_KEY;
+const supabase = createClient(url, anon_key);
+
+//handleRegister function 
+const handleRegister = async (e) => {
+  e.preventDefault();
+  console.log(email);
+  try {
+    const { user, error } = await supabase.auth.signUp
+    ({ 
+      email:'someone@email.com',
+      password :"Aveeno1030"
+    });
+      if (error) {
+        console.error(error);
+        } else {
+          console.log('You have successfully registered!:', user);
+          }
+        } catch (error) {
+          console.error('There as an issue with signing up!:', error.message);
+        }
+        }
+  //make registration form
+  return (
+    <div className="form-container">
+      <h2>Register</h2>
+        <form onSubmit = {handleRegister}>
+          <label htmlFor="name">Full Name</label>
+          <br/>
+          <input value = {name} 
+          onChange = {(e) => setName(e.target.value)}>
+          </input>
+          <br/>
+          <label htmlFor="email">Email(Username)</label>
+          <br/>
+          <input value = {email}
+          onChange = {(e) => setEmail(e.target.value)}>
+          </input>
+          <br/>
+          <label htmlFor = "password">Password</label>
+          <br/>
+          <input value = {password} 
+          onChange = {(e) => setPass(e.target.value)}/>
+
+          <br/>
+          <button onClick = {handleRegister} type = "submit">Register</button>
+          <br/>
+          <br/>
+          <button onClick={()=>navigate("/LoginPage")}>Back to Login Page</button>
+          <br/>
+          </form>
          
         </div>
     )
 }
 
-export default Register;
+export default RegisterForm;

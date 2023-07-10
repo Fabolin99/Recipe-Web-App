@@ -47,7 +47,7 @@ const NavigationBar = () => {
         className={`navigation-item ${
           activeItem === "Contact" ? "active" : ""
         }`}
-        onClick={() => handleItemClick("myaccount")}
+        onClick={() => handleItemClick("LoginPage")}
       >
         My Account
       </div>
