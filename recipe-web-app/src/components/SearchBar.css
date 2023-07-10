@@ -65,3 +65,23 @@
 .suggestions li.active {
     background: #fafafa;
 }
+
+.recipe-box {
+    width: 60%;
+    padding: 20px;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+.recipe-box h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.recipe-box p {
+    font-size: 20px;
+    color: #333;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './SearchBar.css';
 import { supabase } from './supabaseConfig'; // import the supabase client
 
@@ -6,11 +6,16 @@ const SearchBar = () => {
     const [searchText, setSearchText] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [activeSuggestion, setActiveSuggestion] = useState(0);
+    const [selectedRecipe, setSelectedRecipe] = useState(null);
 
     const handleChange = async (event) => {
         const value = event.target.value;
         setSearchText(value);
         setActiveSuggestion(0);
+
+        if (value.length === 0) {
+            setSelectedRecipe(null);
+        }
 
         if (value.length > 0) {
             const { data: recipes, error } = await supabase
@@ -29,6 +34,7 @@ const SearchBar = () => {
 
     const handleClick = suggestion => {
         setSearchText(suggestion);
+        setSelectedRecipe(suggestion); // set the clicked suggestion as the selected recipe
         setSuggestions([]);
     };
 
@@ -41,10 +47,11 @@ const SearchBar = () => {
         }
         else if (event.keyCode === 13) { // enter key
             setSearchText(suggestions[activeSuggestion]);
+            setSelectedRecipe(suggestions[activeSuggestion]); // set the active suggestion as the selected recipe
             setSuggestions([]);
         }
     };
-    
+
     return (
         <div className="container">
             <h1 className="title">Recipe Search</h1>
@@ -68,6 +75,13 @@ const SearchBar = () => {
                         </li>
                     ))}
                 </ul>
+            )}
+
+            {selectedRecipe && (
+                <div className="recipe-box">
+                    <h2>Selected Recipe:</h2>
+                    <p>{selectedRecipe}</p>
+                </div>
             )}
         </div>
     );
