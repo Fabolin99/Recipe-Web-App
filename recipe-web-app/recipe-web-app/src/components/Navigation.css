@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.navigation-bar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 200px;
+  overflow: hidden; /* Hide overflowing content */
+  background: linear-gradient(to bottom, #ff7f50, #ffbc00);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 2em;
+  background-color: #fff;
+  color: #ff8000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.logo:hover {
+  background-color: #f8f8f8;
+  transform: scale(1.05);
+}
+
+.navigation-item {
+  flex: 1;
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.5em;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  background: linear-gradient(to right, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navigation-item:hover {
+  background: linear-gradient(to right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+}
+
+.navigation-item.active {
+  background: linear-gradient(to right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.2) 100%);
+  font-weight: bold;
+}
+
+.toggle-button {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+}
+
+body {
+  padding-top: 0px;
+}
