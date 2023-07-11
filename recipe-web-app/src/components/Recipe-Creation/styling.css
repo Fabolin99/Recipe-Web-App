@@ -1,0 +1,44 @@
+*
+{
+    background-color: deepskyblue; /* We can change the color lately.*/
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.container h1 {
+    text-align: center;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+textarea {
+    width: 95%;
+    height: 100px;
+    padding: 8px;
+}
+.recipe-image
+{
+    width: 25%;
+    padding-bottom: 15px;
+}
+.button-container {
+    margin-top: 4px; /* Adjust the top margin as needed */
+    margin-bottom: 10px; /* Adjust the bottom margin as needed */
+}
+
+/* Alternative: Apply styles directly to the button */
+button[type="submit"] {
+    margin-top: 10px; /* Adjust the top margin as needed */
+}
+.form-group{
+    margin-bottom: -16px;
+}

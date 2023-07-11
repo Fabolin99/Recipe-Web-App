@@ -10,6 +10,7 @@ import LoginPage from './MyAccount/LoginPage';
 import Success from "./MyAccount/Success";
 import IngredientsByKey from "./components/IngredientsByKey"
 
+import RecipeCreation from "./components/RecipeCreation";
 function App() {
   return (
     <div className="app">
@@ -19,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/create" element={<NotFound />} />
+          <Route path="/create" element={<RecipeCreation />} />
           <Route path="/plan" element={<RecipePlanner />} />
           <Route path="/myaccount" element={<LoginPage />} />
           <Route path="/Success" element={<Success/>} />
