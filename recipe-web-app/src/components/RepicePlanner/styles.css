@@ -3,15 +3,14 @@
     width: 100%;
     height: 100vh;
     display: grid;
-    gap: 10px;
     grid-template-columns: 1fr 1fr;
     background-color: whitesmoke;
 }
 
 .container {
     border-radius: 10px;
-    max-width: calc(((100vw - 200px ) / 2)- 10px);
-    height: 93vh;
+    width: 95%;
+    height: 95%;
     justify-self: center;
     align-self: center;
     overflow: hidden;
@@ -126,14 +125,13 @@ h2 {
 }
 
 .searchContainer {
-    display: grid;
     margin-top: 10px;
-    grid-template-columns: 7fr 1fr;
     align-items: center;
     justify-items: center;
 }
 
 .searchBar {
+    display: block;
     width: 85%;
     padding: 10px;
     font-size: 13px;
@@ -143,6 +141,7 @@ h2 {
     border: 2px solid #ccc;
     color: #000;
     transition: border-color 0.3s;
+    margin: 0 auto;
 }
 
 .searchBar::placeholder {
