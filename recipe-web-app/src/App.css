@@ -29,3 +29,18 @@
   --font-primary: "Helvetica Neue", Arial, sans-serif;
   --font-secondary: Georgia, "Times New Roman", serif;
 }
+
+.app {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.navigation-bar {
+  grid-column: 1 / 2;
+}
+
+.view {
+  grid-column: 2 / 3;
+  /* padding: 10px; */
+  max-height: 100vh;
+}
