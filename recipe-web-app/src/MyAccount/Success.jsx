@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {Auth} from "@supabase/auth-ui-react";
-import supabase from "supabaseConfig.js";
-import "./MyProfile.css";
+import supabase from "../supabaseConfig.js";
+import "./Success.css";
 
 function Success(){
     const [user, setUser] = useState({});
@@ -10,7 +9,6 @@ function Success(){
     useEffect (() =>{
         async function getUserData(){
             await supabase.auth.getUser().then((value) =>{
-                //value.data.user
                 if(value.data?.user){
                     console.log(value.data.user)
                     setUser(value.data.user);
@@ -22,12 +20,14 @@ function Success(){
 
     async function signOut(){
         const {error} = await supabase.auth.signOut();
-        navigate("/LoginPage");
+        navigate("/myaccount");
     }
     return(
         <div className="success-page">
             <header className="success-header">
                 <h1>Success!</h1>
+                <br/>
+                <p>Welcome Dae</p>
                 <button onClick = {() => signOut()}>Sign Out</button>
             </header>
         </div>

@@ -6,11 +6,9 @@ import NotFound from "./components/NotFound";
 import RecipePlanner from "./components/RecipePlanner";
 import HomePage from "./components/HomePage";
 import LoginPage from './MyAccount/LoginPage';
-import { useState } from 'react';
+import Success from "./MyAccount/Success";
 
 function App() {
-
-  const [formSwitch, setOnFormSwitch] = useState(true)
   return (
     <div>
       <BrowserRouter>
@@ -21,7 +19,7 @@ function App() {
           <Route path="/cookbooks" element={<NotFound />} />
           <Route path="/plan" element={<RecipePlanner />} />
           <Route path="/myaccount" element={<LoginPage />} />
-
+          <Route path="/Success" element={<Success/>} />
         </Routes>
       </BrowserRouter>
     </div>
