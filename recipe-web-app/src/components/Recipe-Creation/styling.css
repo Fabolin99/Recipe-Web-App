@@ -6,6 +6,9 @@
     max-width: 800px;
     margin: 0 auto;
 }
+.container h1 {
+    text-align: center;
+}
 
 .form-grid {
     display: grid;
@@ -18,7 +21,7 @@ label {
 }
 
 textarea {
-    width: 100%;
+    width: 95%;
     height: 100px;
     padding: 8px;
 }
@@ -26,4 +29,16 @@ textarea {
 {
     width: 25%;
     padding-bottom: 15px;
+}
+.button-container {
+    margin-top: 4px; /* Adjust the top margin as needed */
+    margin-bottom: 10px; /* Adjust the bottom margin as needed */
+}
+
+/* Alternative: Apply styles directly to the button */
+button[type="submit"] {
+    margin-top: 10px; /* Adjust the top margin as needed */
+}
+.form-group{
+    margin-bottom: -16px;
 }

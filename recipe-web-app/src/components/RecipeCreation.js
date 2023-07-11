@@ -1,10 +1,11 @@
-import "./styling.css"
+import "./Recipe-Creation/styling.css"
 import React, { useState } from "react";
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = 'https://ixfirovbkskvyhrltteh.supabase.co'
-const supabaseKey = process.env.REACT_APP_SUPABASE_KEY
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4Zmlyb3Zia3Nrdnlocmx0dGVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUwNDQzMDMsImV4cCI6MjAwMDYyMDMwM30.e-9p8pkQ7T5FnXai60BydhcREf1O-Ga3h0VTZzCCUPY'
 const supabase = createClient(supabaseUrl, supabaseKey)
+
 
 function RecipeCreation() {
     const [description, setDescription] = useState('');
@@ -26,6 +27,7 @@ function RecipeCreation() {
     const handleIngredientsChange = (e) => {
         setIngredients(e.target.value);
     };
+
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -49,7 +51,7 @@ function RecipeCreation() {
             const { data, error } = await supabase.from('recipes').insert([
                 {
                     description,
-                    ingredients: JSON.parse(ingredients),
+                    ingredients,
                     instructions,
                     image_data: fileData,
                 },
@@ -103,6 +105,7 @@ function RecipeCreation() {
                         id="description"
                         value={description}
                         onChange={handleDescriptionChange}
+                        placeholder="Enter description (e.g., Banana bread ...)"
                     ></textarea>
                 </div>
                 <div className="form-group">
@@ -111,6 +114,7 @@ function RecipeCreation() {
                         id="ingredients"
                         value={ingredients}
                         onChange={handleIngredientsChange}
+                        placeholder="Enter ingredients (e.g., 1 cup flour, 2 eggs, ...)"
                     ></textarea>
                 </div>
                 <div className="form-group">
@@ -119,6 +123,7 @@ function RecipeCreation() {
                         id="instructions"
                         value={instructions}
                         onChange={handleInstructionsChange}
+                        placeholder="Enter instructions (e.g., first, add the two eggs and milk together...)"
                     ></textarea>
                 </div>
                 <div className="form-group">
@@ -130,7 +135,9 @@ function RecipeCreation() {
                         onChange={handleImageChange}
                     />
                 </div>
-                <button type="submit">Save</button>
+                <div className="button-container">
+                    <button type="submit">Save</button>
+                </div>
             </form>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {isSubmitted && <p className="success-message">{successMessage}</p>}
