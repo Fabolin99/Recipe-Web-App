@@ -7,8 +7,7 @@ import "./IngredientList/IngredientsByKey.css";
 function IngredientsByKey(props) {
     //const keys = [13,14,15,16,17];
     const [ingredientsFromKey, setIngredientsFromKey] = useState([]);
-    const { keys } = props;
-    console.log(keys);
+    
     const getIngredients = async (keys) => {
         const { data, error } = await supabase
             .from('recipes')
@@ -22,9 +21,28 @@ function IngredientsByKey(props) {
     
           const ingredientsList = data.flatMap((row) => row.ingredients.split(","));
           setIngredientsFromKey(ingredientsList);
-        };
+    };
     
     useEffect(() => {
+        const storedRecipes = localStorage.getItem('recipes');
+        var parsedRecipes = null;
+
+        // If there are no stored recipes, return an empty array
+        if (!storedRecipes) {
+            return;
+        }
+
+        // Parse the stored recipes from JSON format
+        try {
+            parsedRecipes =  JSON.parse(storedRecipes);
+        } catch (error) {
+            console.error('Error parsing stored recipes:', error);
+            return;
+        }
+        
+        const keys = parsedRecipes.map(recipe => parseInt(recipe.id, 10));
+
+
         getIngredients(keys);
     }, []);
         

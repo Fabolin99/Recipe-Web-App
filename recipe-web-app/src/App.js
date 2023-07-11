@@ -8,6 +8,7 @@ import RecipePlanner from "./components/RecipePlanner";
 import HomePage from "./components/HomePage";
 import LoginPage from './MyAccount/LoginPage';
 import Success from "./MyAccount/Success";
+import IngredientsByKey from "./components/IngredientsByKey"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/plan" element={<RecipePlanner />} />
           <Route path="/myaccount" element={<LoginPage />} />
           <Route path="/Success" element={<Success/>} />
+          <Route path="/ingredients" element={<IngredientsByKey />} />
         </Routes>
         </div>
       </BrowserRouter>

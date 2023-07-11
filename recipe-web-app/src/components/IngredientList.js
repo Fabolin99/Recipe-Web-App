@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./IngredientList/IngredientList.css";
 
 function IngredientList() {
-  const checkBox = (index) => {
-    const updatedIngredients = [...ingredients];
-    updatedIngredients[index][3] = !updatedIngredients[index][3];
-    setIngredients(updatedIngredients);
-  };
+  
+    const checkBox = (index) => {
+        const updatedIngredients = [...ingredients];
+        updatedIngredients[index][3] = !updatedIngredients[index][3]; // What is this doing. There's nothing there.
+        setIngredients(updatedIngredients);
+    };
+
   const [ingredients, setIngredients] = useState([
     [1, "item", "eggs"],
     [2, "lbs", "chicken"],
@@ -21,6 +23,7 @@ function IngredientList() {
     [1, "item", "pickles"],
     [1, "item", "celery"],
   ]);
+
   const compileIngredients = () => {
     return (
       <ul className="ingredientList">
@@ -39,6 +42,7 @@ function IngredientList() {
       </ul>
     );
   };
+  
   return (
     <div>
       <h1 className="title">Ingredients</h1>

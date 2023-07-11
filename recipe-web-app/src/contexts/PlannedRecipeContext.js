@@ -30,9 +30,35 @@ export const PlannedRecipesProvider = ({ children }) => {
         }
     };
 
+    const getStoredRecipes = () => {
+        // Check if stored recipes exist in local storage
+        const storedRecipes = localStorage.getItem('recipes');
+
+        // If there are no stored recipes, return an empty array
+        if (!storedRecipes) {
+            return [];
+        }
+
+        // Parse the stored recipes from JSON format
+        try {
+            const parsedRecipes = JSON.parse(storedRecipes);
+
+            // Return the parsed recipes array
+            return parsedRecipes;
+        } catch (error) {
+            console.error('Error parsing stored recipes:', error);
+            return [];
+        }
+    };
+
+    const loadStoredRecipes = () => {
+        const storedPlannedRecipes = getStoredRecipes();
+        setPlannedRecipes([...storedPlannedRecipes]);
+    }
+
     return (
         <PlannedRecipesContext.Provider
-            value={{ plannedRecipes, addPlannedRecipe, removePlannedRecipe }}
+            value={{ plannedRecipes, addPlannedRecipe, removePlannedRecipe, loadStoredRecipes }}
         >
             {children}
         </PlannedRecipesContext.Provider>

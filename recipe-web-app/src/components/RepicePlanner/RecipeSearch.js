@@ -50,7 +50,7 @@ const RecipeSearch = () => {
     };
 
     return (
-        <div className="container recipeSearch">
+        <div className="planContainer recipeSearch">
             <h2>Recipes</h2>
             <div className="searchContainer">
                 <input
