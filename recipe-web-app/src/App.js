@@ -5,7 +5,7 @@ import NavigationBar from "./components/NavigationBar";
 import NotFound from "./components/NotFound";
 import RecipePlanner from "./components/RecipePlanner";
 import HomePage from "./components/HomePage";
-import IngredientList from './components/IngredientList'
+import IngredientsByKey from './components/IngredientsByKey'
 function App() {
   return (
     <div>
@@ -17,7 +17,7 @@ function App() {
           <Route path="/cookbooks" element={<NotFound />} />
           <Route path="/plan" element={<RecipePlanner />} />
           <Route path="/myaccout" element={<NotFound />} />
-          <Route path="/ingredients" element={<IngredientList />} />
+          <Route path="/ingredients" element={<IngredientsByKey />} />
         </Routes>
       </BrowserRouter>
     </div>
