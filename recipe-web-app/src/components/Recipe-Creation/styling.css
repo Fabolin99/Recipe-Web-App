@@ -1,11 +1,8 @@
-*
-{
-    background-color: deepskyblue; /* We can change the color lately.*/
-}
 .container {
     max-width: 800px;
     margin: 0 auto;
 }
+
 .container h1 {
     text-align: center;
 }
@@ -25,20 +22,22 @@ textarea {
     height: 100px;
     padding: 8px;
 }
-.recipe-image
-{
+
+.recipe-image {
     width: 25%;
     padding-bottom: 15px;
 }
+
 .button-container {
-    margin-top: 4px; /* Adjust the top margin as needed */
-    margin-bottom: 10px; /* Adjust the bottom margin as needed */
+    margin-top: 4px; 
+    margin-bottom: 10px; 
 }
 
 /* Alternative: Apply styles directly to the button */
 button[type="submit"] {
-    margin-top: 10px; /* Adjust the top margin as needed */
+    margin-top: 10px; 
 }
+
 .form-group{
     margin-bottom: -16px;
 }
