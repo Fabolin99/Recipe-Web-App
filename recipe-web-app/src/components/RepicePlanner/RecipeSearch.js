@@ -8,7 +8,7 @@ import supabase from "../../supabaseConfig";
  * @description Search for recipes and display them in a list.
  */
 const RecipeSearch = () => {
-    const { plannedRecipes, addPlannedRecipe } = useContext(PlannedRecipesContext);
+    const { addPlannedRecipe } = useContext(PlannedRecipesContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [recipes, setRecipes] = useState([]);
 
@@ -52,7 +52,7 @@ const RecipeSearch = () => {
     return (
         <div className="planContainer recipeSearch">
             <h2>Recipes</h2>
-            <div className="searchContainer">
+            <div className="searchPlanContainer">
                 <input
                     className="searchBar"
                     type="text"

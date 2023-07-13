@@ -48,21 +48,21 @@ function IngredientsByKey(props) {
         
 
     return (
-        <div className="container">
-      <div className="ingredients-box">
-      <h1>Ingredients</h1>
-      <div className="list-container">
-      <ul className="ing-list">
-        {ingredientsFromKey.map((ingredient, index) => (
-          <li className="list-item"key={index}>
-            <input type="checkbox" />
-            <span>{ingredient.trim()}</span>
-          </li>
-        ))}
-      </ul>
-      </div>
-      </div>
-    </div>
+        <div className="ingredientsContainer">
+            <div className="ingredients-box">
+                <h1>Ingredients</h1>
+                <div className="list-container">
+                    <ul className="ing-list">
+                        {ingredientsFromKey.map((ingredient, index) => (
+                        <li className="list-item"key={index}>
+                            <input type="checkbox" />
+                            <span>{ingredient.trim()}</span>
+                        </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
       );
 }
 

@@ -1,18 +1,15 @@
-.container{    
-  display: flex;
+.ingredientsContainer{    
   justify-content: center; 
-  padding-top: 10%;
+  margin: 10px;
+  padding-bottom: 10px;
   }
 
 .ingredients-box {
-  margin: 0 25%;
-  max-width: 50%; /* Optional: Set a max-width for the box */
-  border: 1px solid grey;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 15px;
   border-radius: 10px;
-  
+  max-width: 80%;
+  margin: 0 auto;
+  background-color: #f3f3f3;
+  padding-bottom: 10px;
 }
 
 .heading-container {
@@ -29,14 +26,47 @@ h1{
   border-top-left-radius: 10px;
   padding: 25px;
 }
-.list-item{
-  border: 1px solid grey;
-  margin-bottom: 4px;
+
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
   border-radius: 10px;
-  background-color: #eee;
+  margin-top: 8px;
 }
-.ing-list{
+
+.list-item > input {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  appearance: none;
+  border: 2px solid #333;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.list-item > input:checked {
+  background-color: #333;
+}
+
+.list-item > input:checked + span {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.list-item > input:focus {
+  box-shadow: 0 0 0 2px rgba(51, 51, 51, 0.3);
+}
+
+
+.list-item > span {
+  flex-grow: 1;
+}
+
+.ing-list {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 0 10px;
 }

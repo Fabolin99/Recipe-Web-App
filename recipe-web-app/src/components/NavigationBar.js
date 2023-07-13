@@ -7,7 +7,7 @@ const NavigationBar = () => {
   const [activeItem, setActiveItem] = useState("");
 
   const navItems = [
-    { name: "Discover", path: "/search" },
+    { name: "Discover", path: "/" },
     { name: "Create", path: "/create" },
     { name: "Plan", path: "/plan" },
     { name: "My Account", path: "/myaccount" },

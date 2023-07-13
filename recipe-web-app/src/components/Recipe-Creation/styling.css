@@ -1,26 +1,25 @@
-.container {
+.creationContainer {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 10px auto;
+    background-color: #f3f3f3;
+    border-radius: 10px;
 }
 
-.container h1 {
+.creationContainer h1 {
     text-align: center;
+    margin: 0;
 }
 
 .form-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 label {
     font-weight: bold;
-}
-
-textarea {
-    width: 95%;
-    height: 100px;
-    padding: 8px;
 }
 
 .recipe-image {
@@ -40,4 +39,34 @@ button[type="submit"] {
 
 .form-group{
     margin-bottom: -16px;
+}
+
+/* Styles for text areas */
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 4px;
+  height: calc(48vh * .3);
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  resize: none;
+}
+
+textarea:hover,
+textarea:focus {
+  border-color: #888;
+  outline: none;
+}
+
+textarea::placeholder {
+  color: #999;
+}
+
+
+textarea:disabled {
+  background-color: #f4f4f4;
+  cursor: not-allowed;
 }

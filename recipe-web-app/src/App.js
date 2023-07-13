@@ -5,7 +5,6 @@ import NavigationBar from "./components/NavigationBar";
 import NotFound from "./components/NotFound";
 import Search from "./components/Search";
 import RecipePlanner from "./components/RecipePlanner";
-import HomePage from "./components/HomePage";
 import LoginPage from './MyAccount/LoginPage';
 import Success from "./MyAccount/Success";
 import IngredientsByKey from "./components/IngredientsByKey"
@@ -18,13 +17,13 @@ function App() {
         <NavigationBar />
         <div className="view">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/" element={<Search />} />
           <Route path="/create" element={<RecipeCreation />} />
           <Route path="/plan" element={<RecipePlanner />} />
           <Route path="/myaccount" element={<LoginPage />} />
           <Route path="/Success" element={<Success/>} />
           <Route path="/ingredients" element={<IngredientsByKey />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
         </div>
       </BrowserRouter>

@@ -46,15 +46,17 @@ const SearchBar = () => {
             setActiveSuggestion(activeSuggestion === suggestions.length - 1 ? 0 : activeSuggestion + 1);
         }
         else if (event.keyCode === 13) { // enter key
-            setSearchText(suggestions[activeSuggestion].description);
-            setSelectedRecipe(suggestions[activeSuggestion]);
+            if (suggestions.length > 0 && suggestions[activeSuggestion]) {
+                setSearchText(suggestions[activeSuggestion].description);
+                setSelectedRecipe(suggestions[activeSuggestion]);
+            }
             setSuggestions([]);
         }
     };
 
     return (
-        <div className="container">
-            <h1 className="title">Recipe Search</h1>
+        <div className="searchContainer">
+            <h1 className="searchTitle">Recipe Search</h1>
             <input 
                 className="search-bar"
                 type="text"
@@ -80,9 +82,11 @@ const SearchBar = () => {
             {selectedRecipe && (
                 <div className="recipe-box">
                     <h2>{selectedRecipe.description}</h2>
-                    <img src={selectedRecipe.image_data} alt={selectedRecipe.description}/>
-                    <p><strong>Ingredients:</strong> {selectedRecipe.ingredients}</p>
-                    <p><strong>Instructions:</strong> {selectedRecipe.instructions}</p>
+                    <div className='information'>
+                        <img src={selectedRecipe.image_data} alt={selectedRecipe.description}/>
+                        <p><strong>Ingredients:</strong> {selectedRecipe.ingredients}</p>
+                        <p><strong>Instructions:</strong> {selectedRecipe.instructions}</p>
+                    </div>
                 </div>
             )}
         </div>
