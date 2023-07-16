@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./IngredientList/IngredientsByKey.css";
 
 
-
+//Takes ana array of keys from the Recipe Planner component and then outputs the ingredients based on the key given
 function IngredientsByKey(props) {
     //const keys = [13,14,15,16,17];
     const [ingredientsFromKey, setIngredientsFromKey] = useState([]);
@@ -22,7 +22,6 @@ function IngredientsByKey(props) {
           const ingredientsList = data.flatMap((row) => row.ingredients.split(","));
           setIngredientsFromKey(ingredientsList);
     };
-    
     useEffect(() => {
         const storedRecipes = localStorage.getItem('recipes');
         var parsedRecipes = null;
