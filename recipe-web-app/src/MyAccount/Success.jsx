@@ -27,7 +27,7 @@ function Success(){
             <header className="success-header">
                 <h1>Success!</h1>
                 <br/>
-                <p>Welcome Dae</p>
+                <p>Welcome</p>
                 <button onClick = {() => signOut()}>Sign Out</button>
             </header>
         </div>
