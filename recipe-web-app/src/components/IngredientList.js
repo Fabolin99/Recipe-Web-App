@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./IngredientList/IngredientList.css";
 
+
+//Null not use in final app
+// Took all ingredients and amount and compiled it down
 function IngredientList() {
   
     const checkBox = (index) => {

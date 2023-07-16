@@ -42,7 +42,7 @@ function RecipeCreation() {
             }
 
             const fileData = await readFileAsBase64(image);
-
+            //inserts data to supabase using the client created from supabaseConfig
             const { data, error } = await supabase.from('recipes').insert([
                 {
                     description,

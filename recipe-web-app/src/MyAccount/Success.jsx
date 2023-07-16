@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../supabaseConfig.js";
 import "./Success.css";
 
+
+//A simple success page for when you successfully login
 function Success(){
     const [user, setUser] = useState({});
     const navigate = useNavigate();
